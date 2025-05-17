@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Shafarik&family=Unbounded:wght@200..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Unbounded', sans-serif;
     background-color: #1a1a2e;
     color: white;
     text-align: center;
-    margin: 0;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -21,9 +27,8 @@ body {
 }
 
 .logo {
-    width:173.25px;
-    height:48.77px;
-
+    width: 173.25px;
+    height: 48.77px;
 }
 
 .score {
@@ -31,23 +36,26 @@ body {
     margin: 30px 0;
     color: #ffffff;
 }
-.score::before{
-    content:url("src/coin.png");
-    display: inline-block;
-    width:64px;
-    height:58px;
-    margin-right:15px;
-    margin-top:40px;
 
+.score::before {
+    content: url("src/coin.png");
+    display: inline-block;
+    width: 64px;
+    height: 58px;
+    margin-right: 15px;
+    margin-top: 40px;
+    transition: transform 0.3s;
 }
+
 .main-button {
     width: 401px;
     height: 226px;
     cursor: pointer;
-    background: url ("src/background-gradient.png");
+    background: none; /* Фон удален */
     transition: transform 0.1s;
 }
-.main-button img{
+
+.main-button img {
     width: 401px;
     height: 226px;
 }
@@ -64,29 +72,36 @@ body {
     margin-bottom: 30px;
 }
 
-.card-click, .card-sec {
+.card-click,
+.card-sec {
     border-radius: 10px;
     padding: 15px;
     width: 45%;
 }
-.card-click img{
-    width:123px;
+
+.card-click img {
+    width: 123px;
     height: 82px;
     margin: 10px 0;
-}
-.card-sec img {
-    width:48px;
-    height: 65px;
-    margin: 10px 0;
+    transition: transform 0.3s;
 }
 
-.count-click, .count-sec {
+.card-sec img {
+    width: 48px;
+    height: 65px;
+    margin: 10px 0;
+    transition: transform 0.3s;
+}
+
+.count-click,
+.count-sec {
     color: #f8c537;
     font-weight: bold;
     margin-top: 5px;
 }
 
-.upgrade-click, .upgrade-sec {
+.upgrade-click,
+.upgrade-sec {
     background-color: #042E6F;
     color: white;
     border-radius: 10px;
@@ -96,15 +111,19 @@ body {
     cursor: pointer;
     width: 80%;
     max-width: 300px;
+    transition: all 0.3s;
 }
 
-.upgrade-click:hover, .upgrade-sec:hover {
+.upgrade-click:hover,
+.upgrade-sec:hover {
     background-color: #0f3460;
 }
-.shop-items{
-    display:grid;
+
+.shop-items {
+    display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
 .shop-button {
     color: white;
     border: none;
@@ -113,19 +132,21 @@ body {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.2s;
 }
 
 .shop-button:hover {
     transform: translateY(-2px);
 }
-.upgrade{
+
+.upgrade {
     display: flex;
     justify-content: space-around;
     width: 100%;
     max-width: 500px;
     margin-bottom: 30px;
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -135,7 +156,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -146,7 +167,7 @@ body {
     width: 80%;
     max-width: 500px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .close {
@@ -168,7 +189,8 @@ body {
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
-.shop-item div{
+
+.shop-item div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,7 +201,8 @@ body {
     width: auto;
     height: auto;
 }
-.shop-item div span:last-child{
+
+.shop-item div span:last-child {
     display: flex;
     flex-direction: row;
 }
@@ -202,4 +225,115 @@ body {
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .header {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .logo {
+        width: min(173.25px, 25vw);
+        height: auto;
+    }
+
+    .score {
+        font-size: min(48px, 8vw);
+        margin: 20px 0;
+    }
+
+    .score::before {
+        width: min(64px, 10vw);
+        height: auto;
+        margin-top: 20px;
+        transform: scale(0.8);
+    }
+
+    .main-button,
+    .main-button img {
+        width: min(401px, 90vw);
+        height: auto;
+        aspect-ratio: 401/226;
+    }
+
+    .stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-click,
+    .card-sec {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    .card-click img {
+        width: min(123px, 20vw);
+        height: auto;
+    }
+
+    .card-sec img {
+        width: min(48px, 10vw);
+        height: auto;
+    }
+
+    .shop-items {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .upgrade-click,
+    .upgrade-sec {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .score {
+        font-size: min(36px, 7vw);
+    }
+
+    .score::before {
+        width: min(48px, 8vw);
+        transform: scale(0.6);
+        margin-top: 15px;
+    }
+
+    .shop-title {
+        font-size: min(24px, 6vw);
+    }
+
+    .card-click img {
+        width: 60px;
+    }
+
+    .card-sec img {
+        width: 30px;
+    }
+
+    .shop-button {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+
+    .modal-content {
+        margin: 25% auto;
+        padding: 15px;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
